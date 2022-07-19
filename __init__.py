@@ -134,6 +134,10 @@ def search():
 					pass
 
 		results.insert(0, legend)
+		
+		for item in results:
+			item[3] = item[3][:-5]
+		
 		data = tuple(map(tuple, results))
 
 		#return str(ri(1, 100))
