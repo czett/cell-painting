@@ -1,0 +1,20 @@
+{% block content %}
+<html><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 	<link rel="stylesheet" type="text/css" href="main.css">
+ -->	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+	<title>Error</title>
+</head>
+<body>
+
+<form action="/" method="post">
+	<h1>Error: This value couldn't be found in the dataset</h1><br>
+	<p><input class="button" type="submit" value="Back to search"></p>
+</form>
+
+</body>
+</html>
+{% endblock %}

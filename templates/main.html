@@ -1,0 +1,76 @@
+{% block content %}
+<html><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CELL PAINTING - CLUSTER SUBPROFILE EXPLORER</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+	<div class="left-in-nav-bar">
+		<a href="/"><img src="static/logos/cellpainting.png" width="100%"></a>
+	</div>
+	<div class="right-in-nav-bar">
+		<a href="/">Tool</a>
+		<a href="/contact">Contact</a>
+	</div>
+	<div class="info">
+		<p>Version 1.0</p>
+	</div>
+</div>
+
+<div class="logos">
+	<img src="static/logos/comas.png" width="20%">
+	<img src="static/logos/mpi.png" width="20%" style="float: right;">
+</div>
+
+<div class="search-options">
+	<form action="/" method="post">
+		<h1>SUBPROFILE EXPLORER</h1><br>
+		<p class="description">
+			This tool provides access to the bioactivity cluster similarity for 1883 reference (landmark) compounds as
+			determined using a subprofiles derived from Cell painting analysis in U2OS cells upon compound treatment for
+			20h. Thus far, ten clusters were defined that are related to modulation of AKT/PI3K/MTOR, Aurora kinases, BET,
+			DNA synthesis, HDAC, HSP90 and tubulin or processes like lysosomotropism/cholesterol homeostasis regulation (L/CH), protein synthesis
+			and uncoupling of the mitochondrial proton gradient.
+			<br><br>
+			How to cite:
+			<br><br>
+			<italic style="font-style: italic;">To be added</italic>
+		</p>
+		<p><input class="input" type="text" name="nm" placeholder="compound name or smiles"></p>
+		<p><input class="button" type="submit" value="search for compound name or smiles"></p>
+	</form>
+</div>
+
+<!--hier bei href="" die Download-Datei einfügen-->
+<a href="" download><button class="button">Download results</button></a>
+
+<div class="tables">	
+	{% for row in variable %}
+	<table class="transpose">
+		<tr>
+		{% for item in row %}
+			{% if item is number %}
+				{% if item >= 85 %}
+					<td class="dblue"><p>{{ item }}</p></td>
+				{% elif item >= 80 %}
+					<td class="lblue"><p>{{ item }}</p></td>
+				{% else %}
+					<td><p>{{ item }}</p></td>
+				{% endif %}
+			{% else %}
+				<td><p>{{ item }}</p></td>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	</table>
+	{% endfor %}
+</div>
+
+</body>
+</html>
+{% endblock %}
